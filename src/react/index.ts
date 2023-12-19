@@ -12,16 +12,18 @@ declare global {
 export default function useReactNativeWebViewBridge({
   handler,
 }: {
-  handler: (eventName: string, data: any) => void;
+  handler?: (eventName: string, data: any) => void;
 }) {
   useEffect(() => {
+    if (!handler) return;
+
     function handlerBridge(e: any) {
       try {
-        console.log(`received message: ${e.data}`);
+        console.log(`received message:`, e.data);
         const { eventName, data } = e.data;
         const parsedData = JSON.parse(data);
         console.log(`eventName: ${eventName}, data: ${data}`);
-        handler(eventName, parsedData);
+        handler?.(eventName, parsedData);
       } catch (err) {
         console.warn(err);
       }
