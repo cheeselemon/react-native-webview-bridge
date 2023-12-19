@@ -1,1 +1,3 @@
-export default function useReactNativeWebViewBridge() {}
+export default function useReactNativeWebViewBridge() {
+  return {};
+}
