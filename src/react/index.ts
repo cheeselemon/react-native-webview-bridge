@@ -17,15 +17,17 @@ export default function useReactNativeWebViewBridge({
   useEffect(() => {
     function handlerBridge(e: any) {
       try {
-        const { eventName, data } = e.data;
+        const { eventName, data } = JSON.parse(e.data);
         console.log(`eventName: ${eventName}, data: ${data}`);
         handler(eventName, data);
       } catch (err) {
         console.warn(err);
       }
     }
+    console.log(`adding listener for ${RNWB_EVENT_NAME}`);
     window?.addEventListener(RNWB_EVENT_NAME, handlerBridge);
     return () => {
+      console.log(`removing listener for ${RNWB_EVENT_NAME}`);
       window?.removeEventListener(RNWB_EVENT_NAME, handlerBridge);
     };
   }, []);
