@@ -3,7 +3,7 @@ import { RNWB_EVENT_NAME } from "../constants";
 
 declare global {
   interface Window {
-    ReactNativeWebview: {
+    ReactNativeWebView: {
       postMessage: (msg: string) => void;
     };
   }
@@ -33,7 +33,7 @@ export default function useReactNativeWebViewBridge({
   return {
     postMessage: (eventName: string, data: any) => {
       const msg = JSON.stringify({ eventName, data });
-      window?.ReactNativeWebview?.postMessage(msg);
+      window?.ReactNativeWebView?.postMessage(msg);
     },
   };
 }
