@@ -17,9 +17,11 @@ export default function useReactNativeWebViewBridge({
   useEffect(() => {
     function handlerBridge(e: any) {
       try {
-        const { eventName, data } = JSON.parse(e.data);
+        console.log(`received message: ${e.data}`);
+        const { eventName, data } = e.data;
+        const parsedData = JSON.parse(data);
         console.log(`eventName: ${eventName}, data: ${data}`);
-        handler(eventName, data);
+        handler(eventName, parsedData);
       } catch (err) {
         console.warn(err);
       }
