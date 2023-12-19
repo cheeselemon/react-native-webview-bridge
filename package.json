@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/cheeselemon/react-native-webview-bridge.git"
   },
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
