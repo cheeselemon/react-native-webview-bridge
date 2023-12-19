@@ -10,6 +10,7 @@ export default {
     format: 'es',
     sourcemap: true,
   },
+  external: ['react', 'react-dom'],
   plugins: [
     nodeResolve(),
     typescript(),

@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { RNWB_EVENT_NAME } from "../constants";
 
 declare global {
@@ -14,7 +14,7 @@ export default function useReactNativeWebViewBridge({
 }: {
   handler: (eventName: string, data: any) => void;
 }) {
-  React.useEffect(() => {
+  useEffect(() => {
     function handlerBridge(e: any) {
       try {
         const { eventName, data } = e.data;
