@@ -21,9 +21,8 @@ export default function useReactNativeWebViewBridge({
       try {
         console.log(`received message:`, e.data);
         const { eventName, data } = e.data;
-        const parsedData = JSON.parse(data);
         console.log(`eventName: ${eventName}, data: ${data}`);
-        handler?.(eventName, parsedData);
+        handler?.(eventName, data);
       } catch (err) {
         console.warn(err);
       }
