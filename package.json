@@ -4,7 +4,8 @@
   "description": "A messaging bridge for React-App and React-Native-WebView.",
   "private": false,
   "scripts": {
-    "build": "rollup --config"
+    "clean": "rm -rf dist",
+    "build": "npm run clean && rollup --config"
   },
   "repository": {
     "type": "git",

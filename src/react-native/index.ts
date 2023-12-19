@@ -1,14 +1,9 @@
-export default function useReactNativeWebViewBridge(
-  webViewRef: any,
-  callbacks: { [key: string]: (data: any) => void }
-) {
+export default function useReactNativeWebViewBridge(webViewRef: any) {
   return {
-    handleMessage: (msg: any) => {
+    handleMessage: (msg: any, cb: (eventName: string, data: any) => void) => {
       try {
         const { eventName, data } = JSON.parse(msg.nativeEvent.data);
-        if (callbacks[eventName]) {
-          callbacks[eventName](data);
-        }
+        cb(eventName, data);
       } catch (e) {}
     },
     postMessage: (eventName: string, data: any) => {
