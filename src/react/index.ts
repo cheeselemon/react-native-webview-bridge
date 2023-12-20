@@ -36,6 +36,11 @@ export default function useReactNativeWebViewBridge({
   }, []);
 
   return {
+    /**
+     * Posts a message to react-native-webview component
+     * @param eventName string
+     * @param data string or object
+     */
     postMessage: (eventName: string, data: any) => {
       const msg = JSON.stringify({ eventName, data });
       window?.ReactNativeWebView?.postMessage(msg);
