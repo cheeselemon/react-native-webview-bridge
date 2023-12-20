@@ -30,7 +30,7 @@ export default function useReactNativeWebViewBridge(webViewRef: any) {
     postMessage: (eventName: string, data: any) => {
       const msg = JSON.stringify({ eventName, data });
       webViewRef?.current?.injectJavaScript(
-        `window.dispatchEvent(new MessageEvent('${RNWB_EVENT_NAME}', { data: ${msg} })); console.log('message sent: ${msg}');`
+        `window.dispatchEvent(new MessageEvent('${RNWB_EVENT_NAME}', { data: ${msg} }));`
       );
     },
   };

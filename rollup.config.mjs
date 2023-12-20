@@ -23,6 +23,13 @@ export default {
       babelHelpers: "bundled",
       presets: ["@babel/preset-env", "@babel/preset-react"],
     }),
-    strip(),
+    strip({
+      include: [
+        '**/*.js',
+        '**/*.ts',
+      ],
+      debugger:true,
+      functions: ["console.log"],
+    }),
   ],
 };
