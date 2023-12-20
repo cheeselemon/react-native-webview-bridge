@@ -6,12 +6,20 @@ export default function useReactNativeWebViewBridge(webViewRef: any) {
      * Handles messages from react app, then calls cb with eventName and data
      * @param msg react-native-webview onMessage event's raw data
      * @param cb callback function that provides eventName and data
+     * @returns true if message is handled, false otherwise
      */
-    handleMessage: (msg: any, cb: (eventName: string, data: any) => void) => {
+    handleMessage: (
+      msg: any,
+      cb: (eventName: string, data: any) => boolean
+    ) => {
       try {
         const { eventName, data } = JSON.parse(msg.nativeEvent.data);
         cb(eventName, data);
-      } catch (e) {}
+        return true;
+      } catch (e) {
+      } finally {
+        return false;
+      }
     },
 
     /**
