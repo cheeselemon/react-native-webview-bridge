@@ -99,7 +99,7 @@ import { useReactNativeWebViewBridgeForReactNative } from "@cheeselemon/react-na
 function MyComponent() {
   const webViewRef = useRef<WebView>(null);
   // needs reference to webview for postMessage
-  const { postMessage, handleMessage } = useReactNativeWebViewBridgeForReactNative(webviewRef);
+  const { postMessage, handleMessage } = useReactNativeWebViewBridgeForReactNative(webViewRef);
 
   // post message to react app
   const handleClick = () => {
