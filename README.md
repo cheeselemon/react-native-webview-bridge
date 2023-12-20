@@ -111,12 +111,14 @@ function MyComponent() {
     ref={webViewRef}
     onMessage={(event) => {
       // pass event object directly for processing
-      handleMessage(event, (eventName: string, data: any) => {
+      const handled = handleMessage(event, (eventName: string, data: any) => {
         // handle published event from react app here
       });
 
-      // it is possible to handle other events that are not published by this library.
-      const { data } = event.nativeEvent; // do whatever you want
+      // it is possible to handle some other events that are not published by this library.
+      if(!handled){
+        const { data } = event.nativeEvent; // do whatever you want
+      }
     }}
   />
 }
