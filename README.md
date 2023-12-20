@@ -19,171 +19,78 @@ A messaging bridge for React-App and React-Native-WebView.
 <img src="https://img.shields.io/github/languages/top/cheeselemon/react-native-webview-bridge?style=flat-square&color=5D6D7E" alt="GitHub top language" />
 </div>
 
----
-
-## 📖 Table of Contents
-- [📖 Table of Contents](#-table-of-contents)
-- [📍 Overview](#-overview)
-- [📦 Features](#-features)
-- [📂 repository Structure](#-repository-structure)
-- [⚙️ Modules](#modules)
-- [🚀 Getting Started](#-getting-started)
-    - [🔧 Installation](#-installation)
-    - [🤖 Running react-native-webview-bridge](#-running-react-native-webview-bridge)
-    - [🧪 Tests](#-tests)
-- [🛣 Roadmap](#-roadmap)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [👏 Acknowledgments](#-acknowledgments)
 
 ---
 
 
 ## 📍 Overview
 
-The React-Native-Webview-Bridge is an innovative project facilitating effective communication between React and React Native through Webview. It enables message exchange, making applications more interactive and dynamic. With TypeScript and Babel configuration for ES6+ code transpilation, it provides valuable tools such as event listener setup, message handling and posting across different application components. The package brings together the modern functionalities of React ecosystem and simplifies the process of building sophisticated, data-driven applications.
+react-native-webview-bridge provides effective communication between React and React Native App using react-native-webview. It acts like a message broker and enables message exchange, making applications more interactive and dynamic. 
 
----
+You don't need to implment yourself such as event listener setup, message handling and posting across different application components, react-native-webview-bridge will do it for you.
 
-## 📦 Features
-
-|    | Feature            | Description                                                                                                        |
-|----|--------------------|--------------------------------------------------------------------------------------------------------------------|
-| ⚙️ | **Architecture**   | The architecture revolves around a React Native WebView Bridge system. It employs TypeScript and leverages Rollup.js for JavaScript module bundling.|
-| 📄 | **Documentation**  | Documentation appears sparse. Code snippets are used to detail projects, but formal documentation is lacking. |
-| 🔗 | **Dependencies**   | Dependencies include several development tools, such as Rollup and Babel, and libraries, including React and React-DOM.|
-| 🧩 | **Modularity**     | Code is modular with clear separation between React and React Native parts. Constants are logically separated. |
-| 🧪 | **Testing**        | There isn't any evidence of testing. No test files or test runners like Jest are present.|
-| ⚡️  | **Performance**    | Direct performance evaluation is challenging. Yet, lightweight structure and lean dependencies suggest potential for high performance.|
-| 🔐 | **Security**       | No explicit security measures observed. Use of WebView suggests potential risks needing mitigation.|
-| 🔀 | **Version Control**| Git is used for version control. However, versioning strategy isn't specified in the provided analysis. |
-| 🔌 | **Integrations**   | The main integration is between React and React Native via a WebView bridge.|
-| 📶 | **Scalability**    | Modularity promotes scalability, but the absence of advanced state management or data layer might limit scale for more complex scenarios. |
-
-
----
-
-
-## 📂 Repository Structure
-
-```sh
-└── react-native-webview-bridge/
-    ├── package-lock.json
-    ├── package.json
-    ├── rollup.config.mjs
-    ├── src/
-    │   ├── constants/
-    │   │   └── index.ts
-    │   ├── index.ts
-    │   ├── react/
-    │   │   └── index.ts
-    │   └── react-native/
-    │       └── index.ts
-    └── tsconfig.json
-
-```
-
----
-
-
-## ⚙️ Modules
-
-<details closed><summary>Root</summary>
-
-| File                                                                                                        | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ---                                                                                                         | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| [rollup.config.mjs](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/rollup.config.mjs) | The code represents a configuration for Rollup.js, which is used for JavaScript module bundling. The configuration is set to transpile TypeScript and ES6+ code using typescript and babel plugins respectively. The nodeResolve plugin helps in resolving imports from node_modules, and commonjs plugin converts CommonJS modules to ES6. The output file is located in the dist directory and the code bundling excludes react and react-dom libraries as they are marked as external.                                               |
-| [tsconfig.json](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/tsconfig.json)         | This TypeScript configuration file sets up a project to compile to ES2020 JavaScript, includes ES2020, DOM, and ESNext libraries, and specifies JSX language generation. It is set to have strict type-checking, force consistent casing in file names, skip library type checks, and produce declaration files and their respective sourcemaps. The source root is set to the src folder, output sent to a dist folder, and non-included files are in node_modules and test files ending in.spec.ts.                                   |
-| [package.json](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/package.json)           | The code represents a package.json file for @cheeselemon/react-native-webview-bridge. It's a library enabling message exchange between React based applications and React-Native webviews. It consists of scripts to clean and build the project. It also lists dependencies like react-dom, babel, and typescript, and peer dependencies including different versions of react and react-dom. The primary entry point is dist/index.js and the repository is hosted on GitHub.                                                         |
-| [package-lock.json](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/package-lock.json) | The code represents the structure and dependencies of a React-native-webview-bridge project. It contains a package-lock.json file providing details about the module's dependencies, their exact versions, and peer dependencies required for the application. It uses packages like Babel, Rollup, and TypeScript for the development environment. It additionally has a source directory containing constants, main application logic, react, and react-native related code. The tsconfig.json handles the typescript configurations. |
-
-</details>
-
-<details closed><summary>Src</summary>
-
-| File                                                                                          | Summary                                                                                                                                                                                                                                                                                                                |
-| ---                                                                                           | ---                                                                                                                                                                                                                                                                                                                    |
-| [index.ts](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/src/index.ts) | The code provided lays out the basic structure of the `react-native-webview-bridge` package. It imports and exports two modules: `useReactNativeWebViewBridgeForReactNative` and `useReactNativeWebViewBridgeForReact`, which likely facilitate communication between React and React Native through a Webview bridge. |
-
-</details>
-
-<details closed><summary>React</summary>
-
-| File                                                                                                | Summary                                                                                                                                                                                                                                                                                                                     |
-| ---                                                                                                 | ---                                                                                                                                                                                                                                                                                                                         |
-| [index.ts](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/src/react/index.ts) | The code is a hook for the React Native WebView Bridge. Its core functionalities include setting up a listener for the RNWB event name on the window, handling receipt of data/query from the WebView, and ability to post messages back to it. It also gracefully cleans up the event listener when it's no longer needed. |
-
-</details>
-
-<details closed><summary>Constants</summary>
-
-| File                                                                                                    | Summary                                                                                                                                                                                                                                                                                                                                                                       |
-| ---                                                                                                     | ---                                                                                                                                                                                                                                                                                                                                                                           |
-| [index.ts](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/src/constants/index.ts) | The code defines a directory structure for a react-native-webview-bridge package. This package helps bridge communications between React Native and WebView. The `src/constants/index.ts` file within this structure specifically exports a constant named `RNWB_EVENT_NAME` which is used as an event identifier for messages between React Native and WebView environments. |
-
-</details>
-
-<details closed><summary>React-native</summary>
-
-| File                                                                                                       | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ---                                                                                                        | ---                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [index.ts](https://github.com/cheeselemon/react-native-webview-bridge/blob/main/src/react-native/index.ts) | The code presents two main functionalities for a WebView Bridge in a React Native app: handleMessage and postMessage. handleMessage manages received messages from a React app, parsing and passing them to a provided callback function. postMessage, on the other hand, allows stringified messages to be sent to a React app or any JavaScript page via WebView's `injectJavaScript` method, triggering an event listener for rnwb:message. |
-
-</details>
 
 ---
 
 ## 🚀 Getting Started
 
-***Dependencies***
+### Installation
 
-Please ensure you have the following dependencies installed on your system:
+Add to your react or react-native project by running the following command:
 
-`- ℹ️ Dependency 1`
+```
+npm i react-native-webview-bridge --save
+```
+Or if you're using yarn: 
 
-`- ℹ️ Dependency 2`
-
-`- ℹ️ ...`
-
-### 🔧 Installation
-
-1. Clone the react-native-webview-bridge repository:
-```sh
-git clone https://github.com/cheeselemon/react-native-webview-bridge
+```
+yarn add react-native-webview-bridge
 ```
 
-2. Change to the project directory:
-```sh
-cd react-native-webview-bridge
+### Usage
+
+**React Application**
+
+Basic usage inside your React component:
+
+```javascript
+import { useReactNativeWebViewBridgeForReact } from "@cheeselemon/react-native-webview-bridge";
+
+function MyComponent() {
+    const { postMessage } = useReactNativeWebViewBridgeForReact({
+      handler: (eventName: string, data: any) => {
+        // handle published event from react-native app
+      }
+    });
+
+    // post message to react-native app
+    const handleClick = () => {
+      postMessage("eventName", { data: "string or object" });
+    };
+}
+
 ```
 
-3. Install the dependencies:
-```sh
-npm install
+Note that when handler is defined, the hook will automatically listen to messages from react-native app and call the handler function with the event name and data. The underlying hook will also automatically add event listener to the window object. 
+
+There may be circumstances where you only want to publish events to react-native app and not listen to events from react-native app. In this case, you can omit the handler function:
+
+```javascript
+const { postMessage } = useReactNativeWebViewBridgeForReact({});
 ```
 
-### 🤖 Running react-native-webview-bridge
+Or if you only want to listen to events from react-native app and not publish events to react-native app, you can omit the postMessage function:
 
-```sh
-npm run build && node dist/main.js
-```
-
-### 🧪 Tests
-```sh
-npm test
+```javascript
+useReactNativeWebViewBridgeForReact({
+  handler: (eventName: string, data: any) => {
+    // handle published event from react-native app
+  }
+});
 ```
 
 ---
 
-
-## 🛣 Project Roadmap
-
-> - [X] `ℹ️  Task 1: Implement X`
-> - [ ] `ℹ️  Task 2: Implement Y`
-> - [ ] `ℹ️ ...`
-
-
----
 
 ## 🤝 Contributing
 
@@ -226,14 +133,31 @@ Once your PR is reviewed and approved, it will be merged into the main branch.
 
 ## 📄 License
 
+MIT License
 
-This project is protected under the [MIT](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+Copyright (c) 2023 cheeselemon
 
----
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## 👏 Acknowledgments
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-- List any resources, contributors, inspiration, etc. here.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
+
 
 [**Return**](#Top)
 
