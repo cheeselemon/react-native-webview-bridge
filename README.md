@@ -38,13 +38,13 @@ You don't need to implment yourself such as event listener setup, message handli
 Add to your react or react-native project by running the following command:
 
 ```
-npm i react-native-webview-bridge --save
+npm i @cheeselemon/react-native-webview-bridge
 ```
 
 Or if you're using yarn:
 
 ```
-yarn add react-native-webview-bridge
+yarn add @cheeselemon/react-native-webview-bridge
 ```
 
 ### Usage
