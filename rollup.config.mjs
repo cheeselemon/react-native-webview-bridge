@@ -2,6 +2,10 @@ import typescript from '@rollup/plugin-typescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import babel from "@rollup/plugin-babel";
 import commonjs from '@rollup/plugin-commonjs';
+import strip from '@rollup/plugin-strip';
+
+
+// remove console log?
 
 export default {
   input: 'src/index.ts',
@@ -19,5 +23,6 @@ export default {
       babelHelpers: "bundled",
       presets: ["@babel/preset-env", "@babel/preset-react"],
     }),
+    strip(),
   ],
 };
