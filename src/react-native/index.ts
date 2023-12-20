@@ -10,8 +10,8 @@ export default function useReactNativeWebViewBridge(webViewRef: any) {
      */
     handleMessage: (
       msg: any,
-      cb: (eventName: string, data: any) => boolean
-    ) => {
+      cb: (eventName: string, data: any) => void
+    ): boolean => {
       try {
         const { eventName, data } = JSON.parse(msg.nativeEvent.data);
         cb(eventName, data);
