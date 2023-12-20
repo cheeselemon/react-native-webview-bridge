@@ -1,5 +1,7 @@
 # react-native-webview-bridge
+
 A messaging bridge for React-App and React-Native-WebView.
+
 <div align="center">
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
@@ -19,16 +21,13 @@ A messaging bridge for React-App and React-Native-WebView.
 <img src="https://img.shields.io/github/languages/top/cheeselemon/react-native-webview-bridge?style=flat-square&color=5D6D7E" alt="GitHub top language" />
 </div>
 
-
 ---
-
 
 ## 📍 Overview
 
-react-native-webview-bridge provides effective communication between React and React Native App using react-native-webview. It acts like a message broker and enables message exchange, making applications more interactive and dynamic. 
+react-native-webview-bridge provides effective communication between React and React Native App using react-native-webview. It acts like a message broker and enables message exchange, making applications more interactive and dynamic.
 
 You don't need to implment yourself such as event listener setup, message handling and posting across different application components, react-native-webview-bridge will do it for you.
-
 
 ---
 
@@ -41,7 +40,8 @@ Add to your react or react-native project by running the following command:
 ```
 npm i react-native-webview-bridge --save
 ```
-Or if you're using yarn: 
+
+Or if you're using yarn:
 
 ```
 yarn add react-native-webview-bridge
@@ -57,21 +57,20 @@ Basic usage inside your React component:
 import { useReactNativeWebViewBridgeForReact } from "@cheeselemon/react-native-webview-bridge";
 
 function MyComponent() {
-    const { postMessage } = useReactNativeWebViewBridgeForReact({
-      handler: (eventName: string, data: any) => {
-        // handle published event from react-native app
-      }
-    });
+  const { postMessage } = useReactNativeWebViewBridgeForReact({
+    handler: (eventName: string, data: any) => {
+      // handle published event from react-native app
+    },
+  });
 
-    // post message to react-native app
-    const handleClick = () => {
-      postMessage("eventName", { data: "string or object" });
-    };
+  // post message to react-native app
+  const handleClick = () => {
+    postMessage("eventName", { data: "string or object" });
+  };
 }
-
 ```
 
-Note that when handler is defined, the hook will automatically listen to messages from react-native app and call the handler function with the event name and data. The underlying hook will also automatically add event listener to the window object. 
+Note that when handler is defined, the hook will automatically listen to messages from react-native app and call the handler function with the event name and data. The underlying hook will also automatically add event listener to the window object.
 
 There may be circumstances where you only want to publish events to react-native app and not listen to events from react-native app. In this case, you can omit the handler function:
 
@@ -85,12 +84,46 @@ Or if you only want to listen to events from react-native app and not publish ev
 useReactNativeWebViewBridgeForReact({
   handler: (eventName: string, data: any) => {
     // handle published event from react-native app
-  }
+  },
 });
 ```
 
----
+**React Native Application**
 
+Basic usage inside your React Native component:
+
+```javascript
+import WebView from 'react-native-webview';
+import { useReactNativeWebViewBridgeForReactNative } from "@cheeselemon/react-native-webview-bridge";
+
+function MyComponent() {
+  const webViewRef = useRef<WebView>(null);
+  // needs reference to webview for postMessage
+  const { postMessage, handleMessage } = useReactNativeWebViewBridgeForReactNative(webviewRef);
+
+  // post message to react app
+  const handleClick = () => {
+    postMessage("eventName", { data: "string or object" });
+  };
+
+  
+  return <WebView
+    ref={webViewRef}
+    onMessage={(event) => {
+      // pass event object directly for processing
+      handleMessage(event, (eventName: string, data: any) => {
+        // handle published event from react app here
+      });
+
+      // it is possible to handle other events that are not published by this library.
+      const { data } = event.nativeEvent; // do whatever you want
+    }}
+  />
+}
+
+```
+
+---
 
 ## 🤝 Contributing
 
@@ -100,7 +133,7 @@ Contributions are welcome! Here are several ways you can contribute:
 - **[Join the Discussions](https://github.com/cheeselemon/react-native-webview-bridge/discussions)**: Share your insights, provide feedback, or ask questions.
 - **[Report Issues](https://github.com/cheeselemon/react-native-webview-bridge/issues)**: Submit bugs found or log feature requests for CHEESELEMON.
 
-#### *Contributing Guidelines*
+#### _Contributing Guidelines_
 
 <details closed>
 <summary>Click to expand</summary>
@@ -155,11 +188,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
-
-
 [**Return**](#Top)
 
 ---
-
