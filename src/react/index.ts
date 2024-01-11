@@ -28,10 +28,14 @@ export default function useReactNativeWebViewBridge({
       }
     }
     console.log(`adding listener for ${RNWB_EVENT_NAME}`);
-    window?.addEventListener(RNWB_EVENT_NAME, handlerBridge, true);
+    if (window) {
+      window.addEventListener(RNWB_EVENT_NAME, handlerBridge, true);
+    }
     return () => {
       console.log(`removing listener for ${RNWB_EVENT_NAME}`);
-      window?.removeEventListener(RNWB_EVENT_NAME, handlerBridge, true);
+      if (window) {
+        window.removeEventListener(RNWB_EVENT_NAME, handlerBridge, true);
+      }
     };
   }, []);
 
