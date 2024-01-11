@@ -1,6 +1,6 @@
 {
   "name": "@cheeselemon/react-native-webview-bridge",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A messaging bridge for React-App and React-Native-WebView.",
   "private": false,
   "scripts": {
