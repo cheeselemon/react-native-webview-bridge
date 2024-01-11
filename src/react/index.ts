@@ -22,7 +22,9 @@ export default function useReactNativeWebViewBridge({
         console.log(`received message:`, e.data);
         const { eventName, data } = e.data;
         console.log(`eventName: ${eventName}, data: ${data}`);
-        handler?.(eventName, data);
+        if (handler) {
+          handler(eventName, data);
+        }
       } catch (err) {
         console.warn(err);
       }
@@ -47,7 +49,9 @@ export default function useReactNativeWebViewBridge({
      */
     postMessage: (eventName: string, data: any) => {
       const msg = JSON.stringify({ eventName, data });
-      window?.ReactNativeWebView?.postMessage(msg);
+      if (window && window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(msg);
+      }
     },
   };
 }
